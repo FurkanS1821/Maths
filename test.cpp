@@ -119,7 +119,7 @@ void askForPrimeNumber()
     cout << "Enter a number: ";
     int x;
     cin >> x;
-    cout << x << " is " << (!isPrime(x) ? "not" : "") << " prime." << endl;
+    cout << x << " is " << (!isPrime(x) ? "not " : "") << "prime." << endl;
 }
 
 void askForTriangleArea()
