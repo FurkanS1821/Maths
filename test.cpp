@@ -3,6 +3,12 @@
 
 using namespace std;
 
+double getTriangleArea(double a, double b, double c)
+{
+    double s = (a + b + c) / 2; // semiperimeter
+    return sqrtf(s * (s - a) * (s - b) * (s - c));
+}
+
 bool isPrime(int x)
 {
     if (x == 2) // x is prime if 2
@@ -116,10 +122,31 @@ void askForPrimeNumber()
     cout << x << " is " << (!isPrime(x) ? "not" : "") << " prime." << endl;
 }
 
+void askForTriangleArea()
+{
+    double a, b, c;
+    cout << "Enter first edge's length: ";
+    cin >> a;
+    cout << "Enter second edge's length: ";
+    cin >> b;
+    cout << "Enter third edge's length: ";
+    cin >> c;
+
+    double area = getTriangleArea(a, b, c);
+    if (area <= 0)
+    {
+        cout << "This triangle cannot exist in normal circumstances." << endl;
+    }
+    else
+    {
+        cout << "This triangle's area is " << area << endl;
+    }
+}
+
 int main()
 {
     askAgain:
-    cout << "What do you want to get? (E: HCD/LCF, A: prime number): ";
+    cout << "What do you want to get? (E: HCD/LCF, A: prime number, T: triangle area from edge lengths): ";
     char x;
     cin >> x;
     if (x == 'E' || x == 'e')
@@ -129,6 +156,10 @@ int main()
     else if (x == 'A' || x == 'a')
     {
         askForPrimeNumber();
+    }
+    else if (x == 'T' || x == 't')
+    {
+        askForTriangleArea();
     }
     else
     {
